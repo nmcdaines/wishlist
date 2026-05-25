@@ -17,7 +17,7 @@
     # Handles User Images
 	handle_path /api/assets/* {
 		header @static Cache-Control max-age=31536000
-		root * /usr/src/app/uploads/
+		root * /usr/src/app/data/uploads/
 		file_server
 	}
 

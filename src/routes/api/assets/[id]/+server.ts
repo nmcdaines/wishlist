@@ -1,6 +1,7 @@
 import { getFormatter } from "$lib/server/i18n";
 import { error, type RequestHandler } from "@sveltejs/kit";
 import { readFileSync } from "fs";
+import { env } from "$env/dynamic/private";
 
 export const GET: RequestHandler = async ({ params }) => {
     const $t = await getFormatter();
@@ -10,7 +11,8 @@ export const GET: RequestHandler = async ({ params }) => {
     }
 
     try {
-        const asset = readFileSync(`uploads/${params.id}`);
+        const uploadPath = env.UPLOAD_PATH || "uploads";
+        const asset = readFileSync(`${uploadPath}/${params.id}`);
         return new Response(asset, {
             headers: {
                 "Cache-Control": "public, max-age=31536000"

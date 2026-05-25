@@ -5,7 +5,6 @@ services:
         ports:
             - 3280:3280
         volumes:
-            - ./uploads:/usr/src/app/uploads
             - ./data:/usr/src/app/data
         env_file:
             - .env

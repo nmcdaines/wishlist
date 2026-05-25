@@ -66,7 +66,8 @@ export const createImage = async (filename: string, image: File | string | null 
     try {
         let failure = false;
         const fname = slugify(filename) + "-" + Date.now().toString() + ".webp";
-        const writeStream = createWriteStream(`uploads/${fname}`);
+        const uploadPath = env.UPLOAD_PATH || "uploads";
+        const writeStream = createWriteStream(`${uploadPath}/${fname}`);
         const transformer = sharp()
             .rotate()
             .resize(300)
@@ -87,7 +88,8 @@ export const createImage = async (filename: string, image: File | string | null 
 
 export const deleteImage = async (filename: string): Promise<void> => {
     try {
-        await unlink(`uploads/${filename}`);
+        const uploadPath = env.UPLOAD_PATH || "uploads";
+        await unlink(`${uploadPath}/${filename}`);
     } catch (err) {
         logger.warn({ err }, "Unable to delete file: %s", filename);
     }
