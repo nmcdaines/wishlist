@@ -62,6 +62,7 @@
         "enable-default-list-creation": "Enable default list creation",
         "enable-default-list-creation-tooltip": "Enable the creation of a list when a new user joins a group. Users will still be able to create lists themselves.",
         "enable-signup": "Enable signup",
+        "export-data": "Export Data",
         "enable-sync": "Enable sync",
         "enable-sync-description": "Enable syncing user attributes from your IdP such as name and email.",
         "general": "General",
